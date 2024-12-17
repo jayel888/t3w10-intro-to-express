@@ -1,5 +1,9 @@
 const express = require("express");
 
+const router = require("../routes/users")
+
+
+
 // Instance of the express for configuration
 const app = express();
 
@@ -18,15 +22,6 @@ app.get("/", (req, res) => {
     
 })
 
-app.get("/users", (req, res) => {
-    // Function logic executed
-    
-    res.json({
-        message:"JSON response sent!"
-    });
-})
-
-
 app.post("/", (req, res)=> {
     // Function logic executed
     res.json({
@@ -34,6 +29,7 @@ app.post("/", (req, res)=> {
     });
 });
 
+app.use("/users", router);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`)
