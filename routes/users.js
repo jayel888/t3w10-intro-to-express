@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+const { logger } = require("../src/middlewares/logger");
+
+router.use(logger);
+
 router.get("/", (req, res)=> {
     // Function logic executed
     res.json({
