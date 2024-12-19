@@ -3,7 +3,6 @@ const express = require("express");
 const router = require("../routes/users")
 
 
-
 // Instance of the express for configuration
 const app = express();
 

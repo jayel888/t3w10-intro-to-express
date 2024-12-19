@@ -11,22 +11,65 @@ router.get("/", (req, res)=> {
 router.get("/new", (req, res)=> {
     // Function logic executed
     res.json({
-        message: "New user details here!"
+        message: "New User Details here!"
     });
 });
 
-router.get("/:id", (req, res)=> {
+// Chain all the requests with the same URL pattern
+router.route("/:id")
+.get((req, res)=> {
+    // Function logic executed
+    // To fetch the query parameter: req.params.id
+    res.json({
+        message: `Getting a specific user detail with id: ${req.params.id}`
+    });
+})
+.patch((req, res)=> {
     // Function logic executed
     res.json({
-        message: "Getting a specific user detail"
+        message: `Editing a specific user detail with id: ${req.params.id}`
     });
-});
-
-router.patch("/:id", (req, res)=> {
+})
+.put((req, res)=> {
     // Function logic executed
     res.json({
-        message: "Editing something specific from the specific user"
+        message: `Changing a specific user detail with id: ${req.params.id}`
+    });
+})
+.delete((req, res)=> {
+    // Function logic executed
+    res.json({
+        message: `Deleting a specific user detail with id: ${req.params.id}`
     });
 });
 
-module.exports = router
+// router.get("/:id", (req, res)=> {
+//     // Function logic executed
+//     // To fetch the query parameter: req.params.id
+//     res.json({
+//         message: `Getting a specific user detail with id: ${req.params.id}`
+//     });
+// });
+
+// router.patch("/:id", (req, res)=> {
+//     // Function logic executed
+//     res.json({
+//         message: `Editing a specific user detail with id: ${req.params.id}`
+//     });
+// });
+
+// router.put("/:id", (req, res)=> {
+//     // Function logic executed
+//     res.json({
+//         message: `Changing a specific user detail with id: ${req.params.id}`
+//     });
+// });
+
+// router.delete("/:id", (req, res)=> {
+//     // Function logic executed
+//     res.json({
+//         message: `Deleting a specific user detail with id: ${req.params.id}`
+//     });
+// });
+
+module.exports = router;
